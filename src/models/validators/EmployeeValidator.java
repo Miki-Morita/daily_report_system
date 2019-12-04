@@ -13,7 +13,7 @@ public class EmployeeValidator {
         List<String> errors = new ArrayList<String>();
 
         String code_error = _validateCode(e.getCode(), code_duplicate_check_flag);
-        if(code_error.equals("")) {
+        if(!code_error.equals("")) {
             errors.add(code_error);
         }
 
@@ -23,7 +23,7 @@ public class EmployeeValidator {
         }
 
         String password_error = _validatePassword(e.getPassword(), password_check_flag);
-        if(password_error.equals("")) {
+        if(!password_error.equals("")) {
             errors.add(password_error);
         }
 
@@ -40,7 +40,7 @@ public class EmployeeValidator {
         // すでに登録されている社員番号との重複チェック
         if(code_duplicate_check_flag) {
             EntityManager em = DBUtil.createEntityManager();
-            long employees_count = (long)em.createNamedQuery("checkResisteredCode", Long.class)
+            long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
                     .setParameter("code", code)
                     .getSingleResult();
             em.close();
