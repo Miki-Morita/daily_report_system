@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
             query = "SELECT COUNT(r) FROM Report AS r"
             ),
 })
-
+@Entity
 public class Report {
     @Id
     @Column(name = "id")
